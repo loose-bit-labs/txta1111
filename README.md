@@ -1,4 +1,4 @@
-# WW!
+# [Dynamic ]T[e]xt[ures via]A[utomatic]1111
 
 This is a small godot project to use a local install of automatic1111 to generate seamless image tiles and then uses them in godot.
 
