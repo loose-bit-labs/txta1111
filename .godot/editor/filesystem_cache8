@@ -1,0 +1,16 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1737509477
+lbl-nuts-and-bolts.png::CompressedTexture2D::8902972886698930007::1737418187::1737509384::1::::<><>::
+::res://scenes/::1737508645
+::res://scenes/demo/::1737509402
+demo.gd::GDScript::-1::1737509023::0::1::::<>Node3D<>::
+demo.tscn::PackedScene::2631049736331002566::1737509402::0::1::::<><>::res://scenes/demo/demo.gd<>uid://26p8jhy6d83i::::res://scenes/demo/goldish.tres<>uid://bt0dftn3hb12h::::res://scenes/txt_a1111/txt_a1111.tscn<>uid://58uk28vmm5w8::::res://scenes/demo/assets/lulza.glb<>uid://cac0tnbk0nrl1::::res://scenes/demo/assets/dance-to-the-night-245142.mp3
+goldish.tres::StandardMaterial3D::1960064659348901772::1737508237::0::1::::<><>::
+::res://scenes/demo/assets/::1737509384
+dance-to-the-night-245142.mp3::AudioStreamMP3::4778522662634326220::1737421087::1737509384::1::::<><>::
+icon.svg::CompressedTexture2D::2050318530354886683::1737044932::1737509384::1::::<><>::
+lulza.glb::PackedScene::2175023442899009029::1737426528::1737509384::1::::<><>::
+::res://scenes/txt_a1111/::1737508280
+txt_a1111.gd::GDScript::-1::1737482071::0::1::::TxtA1111<>HTTPRequest<>::
+txt_a1111.tscn::PackedScene::3771810255922761277::1737508262::0::1::::<><>::res://scenes/txt_a1111/txt_a1111.gd
+::res://txta1111/::1737509308

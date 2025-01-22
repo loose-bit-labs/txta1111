@@ -1,0 +1,17 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="TxtA1111"
+run/main_scene="res://scenes/demo/demo.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://lbl-nuts-and-bolts.png"
+config/icon="res://scenes/demo/assets/icon.svg"

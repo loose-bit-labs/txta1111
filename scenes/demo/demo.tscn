@@ -1,0 +1,663 @@
+[gd_scene load_steps=27 format=3 uid="uid://bdqrafq64ybj7"]
+
+[ext_resource type="Script" path="res://scenes/demo/demo.gd" id="1_lw7km"]
+[ext_resource type="Material" uid="uid://26p8jhy6d83i" path="res://scenes/demo/goldish.tres" id="2_1dggk"]
+[ext_resource type="PackedScene" uid="uid://bt0dftn3hb12h" path="res://scenes/txt_a1111/txt_a1111.tscn" id="2_avcft"]
+[ext_resource type="PackedScene" uid="uid://58uk28vmm5w8" path="res://scenes/demo/assets/lulza.glb" id="4_ka32l"]
+[ext_resource type="AudioStream" uid="uid://cac0tnbk0nrl1" path="res://scenes/demo/assets/dance-to-the-night-245142.mp3" id="5_p4ohj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pq2h"]
+bg_color = Color(0.670588, 0.376471, 0.658824, 0.411765)
+
+[sub_resource type="Environment" id="Environment_hfq07"]
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lq1x8"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oxoyc"]
+size = Vector3(16, 9, 0.1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ajs2p"]
+radius = 1.0
+height = 2.0
+radial_segments = 8
+rings = 8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_upite"]
+top_radius = 0.8
+bottom_radius = 0.6
+height = 0.2
+radial_segments = 12
+
+[sub_resource type="TorusMesh" id="TorusMesh_3h5py"]
+material = ExtResource("2_1dggk")
+inner_radius = 0.795
+outer_radius = 1.07
+rings = 24
+ring_segments = 10
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_arsrx"]
+material = ExtResource("2_1dggk")
+top_radius = 0.055
+bottom_radius = 0.075
+height = 0.2
+radial_segments = 4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vu7qx"]
+material = ExtResource("2_1dggk")
+top_radius = 0.12
+bottom_radius = 0.13
+height = 0.12
+radial_segments = 8
+
+[sub_resource type="TorusMesh" id="TorusMesh_wyoor"]
+material = ExtResource("2_1dggk")
+inner_radius = 0.2
+outer_radius = 0.27
+rings = 12
+ring_segments = 16
+
+[sub_resource type="BoxMesh" id="BoxMesh_jxare"]
+material = ExtResource("2_1dggk")
+size = Vector3(0.05, 0.1, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckqhr"]
+metallic = 0.2
+roughness = 0.05
+
+[sub_resource type="SphereMesh" id="SphereMesh_kcvgl"]
+material = SubResource("StandardMaterial3D_ckqhr")
+radius = 0.92
+height = 0.1
+radial_segments = 24
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eew2j"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5rydx"]
+material = SubResource("StandardMaterial3D_eew2j")
+size = Vector3(0.05, 0.55, 0.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dr51o"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_p0ebl"]
+material = SubResource("StandardMaterial3D_dr51o")
+top_radius = 0.04
+bottom_radius = 0.04
+height = 0.01
+radial_segments = 16
+rings = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_pm143"]
+material = SubResource("StandardMaterial3D_eew2j")
+size = Vector3(0.03, 0.6, 0.01)
+
+[sub_resource type="Animation" id="Animation_826be"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stage/Texturable/Box:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stage/Texturable/Sphere:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Stage/Clocko/Spinner")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array()
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Stage/Clocko/Spinner:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Stage/Clocko:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.53936, -2.24316)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Stage/Clocko:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.353169, -0.0930419, 0.342662)]
+}
+
+[sub_resource type="Animation" id="Animation_xmmrf"]
+resource_name = "spin"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Stage/Texturable/Box")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stage/Texturable/Box:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.966667, 2.03333, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.26573, 0)]
+}
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Stage/Texturable/Sphere")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array()
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Stage/Texturable/Sphere:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.966667, 2.03333, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.26573, 0)]
+}
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Stage/Clocko/Spinner")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array()
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Stage/Clocko/Spinner:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.96667, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -3.14159), Vector3(0, 0, -6.26573), Vector3(0, 0, 0), Vector3(0, 0, -3.14159), Vector3(0, 0, -6.26573)]
+}
+tracks/6/type = "position_3d"
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/path = NodePath("Stage/Clocko")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array()
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Stage/Clocko:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.35, 1.2, 1.3, 2, 2.35, 3.26667, 3.36667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.49453, 0.590098, -2.23921), Vector3(1.49453, 0.331941, -2.23921), Vector3(1.49453, 1.71936, -2.23921), Vector3(1.49453, 1.4617, -2.23921), Vector3(1.49453, 0.590098, -2.23921), Vector3(1.49453, 0.331941, -2.23921), Vector3(1.49453, 1.71936, -2.23921), Vector3(1.49453, 1.4617, -2.23921)]
+}
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = false
+tracks/8/path = NodePath("Stage/Clocko")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array()
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Stage/Clocko:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.0333333, 0.2, 0.766667, 2, 2.16667, 2.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.300426, -0.210011, -0.0180427), Vector3(0.353169, -0.0930419, 0.342662), Vector3(0.300426, -0.210011, -0.0180427), Vector3(0.300426, -0.210011, -0.0180427), Vector3(0.353169, -0.0930419, 0.342662), Vector3(0.300426, -0.210011, -0.0180427)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wyipu"]
+_data = {
+"RESET": SubResource("Animation_826be"),
+"spin": SubResource("Animation_xmmrf")
+}
+
+[node name="Demo" type="Node3D" node_paths=PackedStringArray("txtA111", "texturable", "prompt_edit", "negative_edit", "steps_edit", "resolution_edit", "generate", "save_image", "file_dialog", "mute", "audio_player", "music_credit", "clocko")]
+script = ExtResource("1_lw7km")
+txtA111 = NodePath("TxtA1111")
+texturable = NodePath("Stage/Texturable")
+prompt_edit = NodePath("UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer/PromptEdit")
+negative_edit = NodePath("UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer/NegativeEdit")
+steps_edit = NodePath("UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer/StepsEdit")
+resolution_edit = NodePath("UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer/ResolutionEdit")
+generate = NodePath("UI/TopMarginContainer/MarginContainer/HBoxContainer/Generate")
+save_image = NodePath("UI/TopRight/SaveImage")
+file_dialog = NodePath("UI/FileDialog")
+mute = NodePath("UI/BottomLeft/Mute")
+audio_player = NodePath("Stage/AudioStreamPlayer3D")
+music_credit = NodePath("UI/BottomLeft/MusicCredit")
+clocko = NodePath("Stage/Clocko")
+
+[node name="TxtA1111" parent="." instance=ExtResource("2_avcft")]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FileDialog" type="FileDialog" parent="UI"]
+title = "Save Image"
+initial_position = 1
+size = Vector2i(756, 404)
+always_on_top = true
+access = 2
+filters = PackedStringArray("*.png ; PNG File")
+
+[node name="TopMarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+offset_right = 895.0
+offset_bottom = 106.0
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 13
+theme_override_constants/margin_right = 13
+theme_override_constants/margin_bottom = 13
+
+[node name="ColorRect" type="ColorRect" parent="UI/TopMarginContainer"]
+layout_mode = 2
+color = Color(0.669667, 0.376012, 0.660587, 0.411765)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/TopMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TopMarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="UI/TopMarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+columns = 4
+
+[node name="Label" type="Label" parent="UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Prompt"
+
+[node name="PromptEdit" type="LineEdit" parent="UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/minimum_character_width = 33
+text = "Wooden wall"
+placeholder_text = "wooden wall"
+clear_button_enabled = true
+
+[node name="Label4" type="Label" parent="UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Steps
+"
+
+[node name="StepsEdit" type="LineEdit" parent="UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/minimum_character_width = 6
+text = "33"
+placeholder_text = "33"
+
+[node name="Label2" type="Label" parent="UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Negative"
+
+[node name="NegativeEdit" type="LineEdit" parent="UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/minimum_character_width = 33
+placeholder_text = "blurry, watermark, out of focus, cropped"
+clear_button_enabled = true
+
+[node name="Label3" type="Label" parent="UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Resolution
+"
+
+[node name="ResolutionEdit" type="LineEdit" parent="UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/minimum_character_width = 6
+text = "256"
+placeholder_text = "256"
+
+[node name="Generate" type="Button" parent="UI/TopMarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Generate
+Image"
+
+[node name="TopRight" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -90.0
+offset_top = 13.0
+offset_right = -13.0
+offset_bottom = 84.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7pq2h")
+
+[node name="SaveImage" type="Button" parent="UI/TopRight"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -66.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = 62.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+disabled = true
+text = "Save
+Image"
+
+[node name="BottomLeft" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -70.0
+offset_right = 381.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7pq2h")
+
+[node name="Mute" type="Button" parent="UI/BottomLeft"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -43.0
+offset_right = 69.0
+offset_bottom = -12.0
+grow_vertical = 0
+size_flags_horizontal = 0
+text = "Mute"
+
+[node name="MusicCredit" type="RichTextLabel" parent="UI/BottomLeft"]
+visible = false
+clip_contents = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 78.0
+offset_top = -39.0
+offset_right = 366.0
+offset_bottom = -15.0
+grow_vertical = 0
+bbcode_enabled = true
+text = "Music by [url=(https://pixabay.com/users/robloxeur-43206746/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=245142nki)]Mika Dupuis[/url] from [url=(https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=245142)]Pixabay[/url]
+"
+fit_content = true
+
+[node name="Stage" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0212716, 2.32476)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Stage"]
+environment = SubResource("Environment_hfq07")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0332)
+light_energy = 2.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.717793, 1.37184, -2.22203)
+
+[node name="Texturable" type="Node3D" parent="Stage"]
+
+[node name="Box" type="MeshInstance3D" parent="Stage/Texturable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71962, 0.449946, -1.57591)
+mesh = SubResource("BoxMesh_lq1x8")
+skeleton = NodePath("../../..")
+
+[node name="Wall" type="MeshInstance3D" parent="Stage/Texturable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.56669)
+mesh = SubResource("BoxMesh_oxoyc")
+skeleton = NodePath("../../..")
+
+[node name="Sphere" type="MeshInstance3D" parent="Stage/Texturable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15777, 0.385465, -1.35195)
+mesh = SubResource("SphereMesh_ajs2p")
+skeleton = NodePath("../../..")
+
+[node name="lulza" parent="Stage/Texturable" instance=ExtResource("4_ka32l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108308, -2.25629, -1.43454)
+
+[node name="Skeleton3D" parent="Stage/Texturable/lulza/Armature" index="0"]
+bones/7/rotation = Quaternion(-0.578993, -0.40073, 0.592092, -0.391931)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.0375866, -0.000312833, -0.00831779, 0.999259)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.0176346, -0.000321918, 0.0182356, 0.999678)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.0187571, 0.0483549, -0.0316331, 0.998153)
+bones/12/rotation = Quaternion(-0.120897, -1.68877e-08, 1.23374e-07, 0.992665)
+bones/13/rotation = Quaternion(0.103199, -9.17596e-08, 4.21345e-09, 0.994661)
+bones/15/rotation = Quaternion(-0.0494188, -0.00767063, 0.153189, 0.986931)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.0108728, -1.67648e-07, -2.10491e-07, 0.999941)
+bones/17/rotation = Quaternion(0.0587322, 2.4163e-07, 2.59355e-07, 0.998274)
+bones/19/rotation = Quaternion(-0.0546249, -0.00217134, 0.0396592, 0.997717)
+bones/20/rotation = Quaternion(0.0288964, -2.4108e-07, -9.08419e-08, 0.999582)
+bones/21/rotation = Quaternion(0.103993, 6.64844e-08, -1.8728e-09, 0.994578)
+bones/23/rotation = Quaternion(-0.0276435, -0.00209404, 0.075503, 0.99676)
+bones/24/rotation = Quaternion(0.00336049, -8.82433e-08, 3.64382e-08, 0.999994)
+bones/25/rotation = Quaternion(-0.0197124, 1.16904e-07, 1.41356e-07, 0.999806)
+bones/25/scale = Vector3(1, 1, 1)
+bones/28/rotation = Quaternion(0.0122333, 6.70602e-08, 1.18287e-07, 0.999925)
+bones/29/rotation = Quaternion(0.0677393, -3.96723e-08, -1.48421e-07, 0.997703)
+bones/31/rotation = Quaternion(0.583582, -0.397615, 0.587788, 0.394765)
+bones/31/scale = Vector3(1, 1, 1)
+bones/32/rotation = Quaternion(0.037246, 0.000683121, 0.0183222, 0.999138)
+bones/32/scale = Vector3(1, 1, 1)
+bones/33/rotation = Quaternion(-0.0177869, 0.0002971, -0.0167004, 0.999702)
+bones/34/rotation = Quaternion(-0.0232713, -0.0332767, 0.0234688, 0.9989)
+bones/34/scale = Vector3(1, 1, 1)
+bones/35/rotation = Quaternion(0.0267308, -0.00901248, -0.319355, 0.947215)
+bones/36/rotation = Quaternion(-0.128102, 6.2917e-08, 5.35264e-08, 0.991761)
+bones/36/scale = Vector3(1, 1, 1)
+bones/37/rotation = Quaternion(0.0800585, -1.60236e-07, -3.04122e-07, 0.99679)
+bones/37/scale = Vector3(1, 1, 1)
+bones/39/rotation = Quaternion(-0.0218794, 0.00348782, -0.157383, 0.987289)
+bones/40/rotation = Quaternion(0.00784883, -5.82095e-08, 1.76957e-08, 0.999969)
+bones/41/rotation = Quaternion(-0.0199161, -3.12521e-07, -1.98877e-07, 0.999802)
+bones/43/rotation = Quaternion(0.00144522, -7.87835e-05, -0.0544722, 0.998514)
+bones/43/scale = Vector3(1, 1, 1)
+bones/44/rotation = Quaternion(-0.0177855, -1.12912e-07, -6.43151e-08, 0.999842)
+bones/47/rotation = Quaternion(-0.00442188, 0.000123956, -0.0279915, 0.999598)
+bones/47/scale = Vector3(1, 1, 1)
+bones/48/rotation = Quaternion(-0.00634961, 2.79402e-09, 7.10148e-09, 0.99998)
+bones/49/rotation = Quaternion(0.0783892, -7.49693e-08, -8.7581e-09, 0.996923)
+bones/49/scale = Vector3(1, 1, 1)
+bones/51/rotation = Quaternion(-0.00684503, -0.000659717, 0.0959206, 0.995365)
+bones/51/scale = Vector3(1, 1, 1)
+bones/52/rotation = Quaternion(-0.0108421, -2.65443e-08, -8.3824e-09, 0.999941)
+bones/53/rotation = Quaternion(0.0225181, -8.71008e-08, -4.19202e-08, 0.999746)
+bones/55/rotation = Quaternion(-0.00096006, -0.0176606, 0.998366, -0.0543367)
+bones/55/scale = Vector3(1.00001, 1, 1)
+bones/56/rotation = Quaternion(-0.049848, 4.56877e-05, -0.000835549, 0.998756)
+bones/56/scale = Vector3(1, 1, 1)
+bones/58/rotation = Quaternion(0.281284, -0.21821, 0.0658448, 0.932163)
+bones/60/scale = Vector3(1.00001, 1, 1)
+bones/61/rotation = Quaternion(-0.046247, -4.12451e-05, 0.000855092, 0.99893)
+bones/61/scale = Vector3(1, 1, 1)
+bones/62/rotation = Quaternion(0.528991, 0.0307459, -0.0191826, 0.847853)
+bones/63/rotation = Quaternion(0.282381, 0.214744, -0.0650145, 0.932695)
+bones/63/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="Stage/Texturable/lulza" index="1"]
+autoplay = "dancing"
+
+[node name="Platform" type="MeshInstance3D" parent="Stage/Texturable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.134175, -2.3228, -1.40339)
+mesh = SubResource("CylinderMesh_upite")
+
+[node name="Clocko" type="Node3D" parent="Stage"]
+transform = Transform3D(0.648895, -0.255366, -0.0610215, 0.220681, 0.618613, -0.242111, 0.142251, 0.205198, 0.653956, 0, 1.53936, -2.24316)
+visible = false
+
+[node name="Body" type="MeshInstance3D" parent="Stage/Clocko"]
+transform = Transform3D(1, 0, 0, 0, -3.0598e-08, -1, 0, 0.7, -4.37114e-08, 0, 0, 0.0348883)
+mesh = SubResource("TorusMesh_3h5py")
+
+[node name="Neck" type="MeshInstance3D" parent="Stage/Clocko"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11812, 0.0286176)
+mesh = SubResource("CylinderMesh_arsrx")
+
+[node name="Head" type="MeshInstance3D" parent="Stage/Clocko/Neck"]
+transform = Transform3D(0.999983, 0, -0.00589918, 0, 1, 0, 0.00589918, 0, 0.999983, 0, 0.160503, 0)
+mesh = SubResource("CylinderMesh_vu7qx")
+skeleton = NodePath("../..")
+
+[node name="Ring" type="MeshInstance3D" parent="Stage/Clocko/Neck/Head"]
+transform = Transform3D(1, -4.19095e-09, 1.11022e-16, 0, -4.37114e-08, -0.6, 4.19095e-09, 1, -2.62268e-08, 0, 0.121809, 0)
+mesh = SubResource("TorusMesh_wyoor")
+
+[node name="Ridges" type="Node3D" parent="Stage/Clocko/Neck/Head"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/Clocko/Neck/Head/Ridges"]
+transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 0, 1.86265e-09, 0, 1, 0.00198925, -0.00114322, -1.17347e-05)
+mesh = SubResource("BoxMesh_jxare")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Stage/Clocko/Neck/Head/Ridges"]
+transform = Transform3D(0.999987, 0, 0.00500907, 0, 1, 0, -0.00500907, 0, 0.999987, 0, 0, 0)
+mesh = SubResource("BoxMesh_jxare")
+skeleton = NodePath("../MeshInstance3D5")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Stage/Clocko/Neck/Head/Ridges"]
+transform = Transform3D(0.86351, 0, 0.504332, 0, 1, 0, -0.504332, 0, 0.86351, 0, 0, 0)
+mesh = SubResource("BoxMesh_jxare")
+skeleton = NodePath("../MeshInstance3D5")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Stage/Clocko/Neck/Head/Ridges"]
+transform = Transform3D(0.868519, 0, -0.495656, 0, 1, 0, 0.495656, 0, 0.868519, 0, 0, 0)
+mesh = SubResource("BoxMesh_jxare")
+skeleton = NodePath("../MeshInstance3D5")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Stage/Clocko/Neck/Head/Ridges"]
+transform = Transform3D(0.495656, 0, 0.868519, 0, 1, 0, -0.868519, 0, 0.495656, 0, 0, 0)
+mesh = SubResource("BoxMesh_jxare")
+skeleton = NodePath("../MeshInstance3D5")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Stage/Clocko/Neck/Head/Ridges"]
+transform = Transform3D(0.504332, 0, -0.86351, 0, 1, 0, 0.86351, 0, 0.504332, 0, 0, 0)
+mesh = SubResource("BoxMesh_jxare")
+skeleton = NodePath("../MeshInstance3D5")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Stage/Clocko/Neck/Head/Ridges"]
+transform = Transform3D(0.999987, 0, 0.00500907, 0, 1, 0, -0.00500907, 0, 0.999987, 0, 0, 0)
+mesh = SubResource("CylinderMesh_vu7qx")
+skeleton = NodePath("../../../..")
+
+[node name="Face" type="MeshInstance3D" parent="Stage/Clocko"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.126532)
+mesh = SubResource("SphereMesh_kcvgl")
+
+[node name="Label3D" type="Label3D" parent="Stage/Clocko"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.533154, 0.223652)
+pixel_size = 0.009
+text = "Hol' up
+"
+
+[node name="UnMovingHand" type="MeshInstance3D" parent="Stage/Clocko"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.274758, 0.185982)
+mesh = SubResource("BoxMesh_5rydx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Stage/Clocko/UnMovingHand"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.280832, 0.0127086)
+mesh = SubResource("CylinderMesh_p0ebl")
+
+[node name="Spinner" type="Node3D" parent="Stage/Clocko"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.34413e-16, 0.176031)
+
+[node name="MovementHand" type="MeshInstance3D" parent="Stage/Clocko/Spinner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305649, 0)
+mesh = SubResource("BoxMesh_pm143")
+skeleton = NodePath("../..")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Stage"]
+stream = ExtResource("5_p4ohj")
+volume_db = -21.186
+autoplay = true
+parameters/looping = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stage"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_wyipu")
+}
+autoplay = "spin"
+
+[connection signal="on_error" from="TxtA1111" to="." method="_on_txt_a_1111_on_error"]
+[connection signal="on_image" from="TxtA1111" to="." method="_on_txt_a_1111_on_image"]
+[connection signal="file_selected" from="UI/FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="text_submitted" from="UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer/PromptEdit" to="." method="_on_prompt_edit_text_submitted"]
+[connection signal="text_submitted" from="UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer/StepsEdit" to="." method="_on_prompt_edit_text_submitted"]
+[connection signal="text_submitted" from="UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer/NegativeEdit" to="." method="_on_prompt_edit_text_submitted"]
+[connection signal="text_submitted" from="UI/TopMarginContainer/MarginContainer/HBoxContainer/GridContainer/ResolutionEdit" to="." method="_on_prompt_edit_text_submitted"]
+[connection signal="pressed" from="UI/TopMarginContainer/MarginContainer/HBoxContainer/Generate" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/TopRight/SaveImage" to="." method="_on_save_image_pressed"]
+[connection signal="pressed" from="UI/BottomLeft/Mute" to="." method="_toggle_mute"]
+
+[editable path="Stage/Texturable/lulza"]
