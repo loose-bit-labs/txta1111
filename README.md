@@ -4,15 +4,7 @@ This is a small [Godot](https://godotengine.org/) project that uses a local inst
 
 ## Demo Scene
 
----
-
-https://youtu.be/cVMn8u_qpg0
-
----
-https://github.com/loose-bit-labs/txta1111/raw/refs/heads/main/web/txta1111-twitted.mp4
----
-
-<img src="web/Screenshot_20250121_203319.png" width="320"/>
+https://www.loose-bit-labs.com/txta1111/web/txta1111-twitted.mp4
 <img src="web/Screenshot_20250121_203428.png" width="320"/>
 
 # Using the TxtA1111 Scene in a Project
