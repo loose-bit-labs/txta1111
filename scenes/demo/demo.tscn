@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://bdqrafq64ybj7"]
+[gd_scene load_steps=28 format=3 uid="uid://bdqrafq64ybj7"]
 
 [ext_resource type="Script" path="res://scenes/demo/demo.gd" id="1_lw7km"]
 [ext_resource type="Material" uid="uid://26p8jhy6d83i" path="res://scenes/demo/goldish.tres" id="2_1dggk"]
 [ext_resource type="PackedScene" uid="uid://bt0dftn3hb12h" path="res://scenes/txt_a1111/txt_a1111.tscn" id="2_avcft"]
 [ext_resource type="PackedScene" uid="uid://58uk28vmm5w8" path="res://scenes/demo/assets/lulza.glb" id="4_ka32l"]
 [ext_resource type="AudioStream" uid="uid://cac0tnbk0nrl1" path="res://scenes/demo/assets/dance-to-the-night-245142.mp3" id="5_p4ohj"]
+[ext_resource type="Texture2D" uid="uid://dy3wwsc5kb0h4" path="res://lbl-nuts-and-bolts.png" id="6_xpk4u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pq2h"]
 bg_color = Color(0.670588, 0.376471, 0.658824, 0.411765)
@@ -447,6 +448,37 @@ bbcode_enabled = true
 text = "Music by [url=(https://pixabay.com/users/robloxeur-43206746/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=245142nki)]Mika Dupuis[/url] from [url=(https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=245142)]Pixabay[/url]
 "
 fit_content = true
+
+[node name="BottomRight" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -137.0
+offset_top = -131.0
+offset_right = -17.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7pq2h")
+
+[node name="TextureRect" type="TextureRect" parent="UI/BottomRight"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -104.0
+offset_right = -13.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_xpk4u")
+expand_mode = 1
 
 [node name="Stage" type="Node3D" parent="."]
 
