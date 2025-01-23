@@ -6,9 +6,7 @@ This is a small [Godot](https://godotengine.org/) project that uses a local inst
 
 
 [![Watch on youTube](https://img.youtube.com/vi/cVMn8u_qpg0/0.jpg)](https://www.youtube.com/watch?v=cVMn8u_qpg0)
-[![Watch the here](https://img.youtube.com/vi/cVMn8u_qpg0/0.jpg)](https://www.loose-bit-labs.com/txta1111/web/txta1111-twitted.mp4)
-
-<img src="web/Screenshot_20250121_203428.png" width="320"/>
+[![Watch the here](web/Screenshot_20250121_203428.png)](https://www.loose-bit-labs.com/txta1111/web/txta1111-twitted.mp4)
 
 # Using the TxtA1111 Scene in a Project
 
