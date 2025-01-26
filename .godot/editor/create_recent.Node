@@ -1,2 +1,8 @@
-TextureRect
 MeshInstance3D
+Label
+HSlider
+CheckBox
+ColorRect
+SubViewport
+Node
+TextureRect
