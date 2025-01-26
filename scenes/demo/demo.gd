@@ -43,6 +43,7 @@ func _ready() -> void:
 	file_dialog.root_subfolder = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS)
 	_on_button_pressed()
 
+
 var __loading = false
 func _load_config() -> void:
 	config = ConfigFile.new()
@@ -92,10 +93,6 @@ func _materialistic() -> void:
 
 func _so_normal() -> void:
 	bump_material = bump.material
-	if false:
-		viewport_texture = ViewportTexture.new()
-		viewport_texture.resource_local_to_scene = true
-		viewport_texture.viewport_path = subviewport.get_path()
 	
 	if common_material:
 		common_material.normal_enabled = true
@@ -127,12 +124,12 @@ func _on_txt_a_1111_on_image(image: ImageTexture) -> void:
 	current_image = image
 	bump_material.set_shader_parameter("og", image)
 	current_normal = image
-	_delay_normal_update() # wait a sec....
+	_delay_normal_update() # wait a frame or so for the shader to update the normal map :-/
 	generate.disabled = false
 	clocko.visible = false
 	file_dialog.visible = false
 	save_image.disabled = false
-	_update_materials()
+
 
 func _delay_normal_update():
 	await get_tree().create_timer(0.131).timeout
@@ -203,7 +200,6 @@ func _on_bump_toggled(toggled_on: bool) -> void:
 func _on_strength_value_changed(value: float) -> void:
 	bump_material.set_shader_parameter("STRENGTH", value)
 	strength_label.text = "%.0f" % value
-	#current_normal = ImageTexture.create_from_image(bumped.get_active_material(0).normal_texture.get_image())
 	_delay_normal_update()
 	_save_config()
 

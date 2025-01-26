@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bdqrafq64ybj7"]
+[gd_scene load_steps=37 format=3 uid="uid://bdqrafq64ybj7"]
 
 [ext_resource type="Script" path="res://scenes/demo/demo.gd" id="1_lw7km"]
 [ext_resource type="Material" uid="uid://26p8jhy6d83i" path="res://scenes/demo/goldish.tres" id="2_1dggk"]
@@ -18,9 +18,14 @@ tonemap_mode = 2
 ssil_radius = 10.0
 volumetric_fog_density = 0.007
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aoyi1"]
+albedo_texture = ExtResource("6_xpk4u")
+uv1_scale = Vector3(2, 2, 2)
+
 [sub_resource type="BoxMesh" id="BoxMesh_lq1x8"]
 resource_local_to_scene = true
-size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_aoyi1")
+size = Vector3(1.7, 1.7, 1.7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3gxrt"]
 albedo_color = Color(0.647059, 0.556863, 1, 1)
@@ -31,10 +36,15 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_3gxrt")
 size = Vector3(16, 9, 0.1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uy7km"]
+albedo_texture = ExtResource("6_xpk4u")
+uv1_scale = Vector3(2, 2, 2)
+
 [sub_resource type="SphereMesh" id="SphereMesh_ajs2p"]
 resource_local_to_scene = true
-radius = 1.0
-height = 2.0
+material = SubResource("StandardMaterial3D_uy7km")
+radius = 1.1
+height = 2.2
 radial_segments = 8
 rings = 8
 
@@ -177,6 +187,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector3(0.353169, -0.0930419, 0.342662)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Stage/Lights/BackLightBox:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_xmmrf"]
 resource_name = "spin"
@@ -277,6 +299,25 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector3(0.300426, -0.210011, -0.0180427), Vector3(0.353169, -0.0930419, 0.342662), Vector3(0.300426, -0.210011, -0.0180427), Vector3(0.300426, -0.210011, -0.0180427), Vector3(0.353169, -0.0930419, 0.342662), Vector3(0.300426, -0.210011, -0.0180427)]
 }
+tracks/10/type = "rotation_3d"
+tracks/10/imported = false
+tracks/10/enabled = false
+tracks/10/path = NodePath("Stage/Lights/BackLightBox")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array()
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Stage/Lights/BackLightBox:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 3.14159), Vector3(0, 0, 6.26573)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wyipu"]
 _data = {
@@ -321,15 +362,14 @@ mute = NodePath("UI/BottomLeft/Mute")
 audio_player = NodePath("Stage/AudioStreamPlayer3D")
 music_credit = NodePath("UI/BottomLeft/MusicCredit")
 bump_toggle = NodePath("UI/BottumMiddle/BumpToggle")
-bump_strength = NodePath("UI/BottumMiddle/Strength")
-bump_scale = NodePath("UI/BottumMiddle/Scale")
+bump_strength = NodePath("UI/BottumMiddle/Label3/Strength")
+bump_scale = NodePath("UI/BottumMiddle/Label2/Scale")
 clocko = NodePath("Stage/Clocko")
-strength_label = NodePath("UI/BottumMiddle/Strength/StrengthLabel")
+strength_label = NodePath("UI/BottumMiddle/Label3/StrengthLabel")
 scale_label = NodePath("UI/BottumMiddle/Label2/ScaleLabel")
 bump = NodePath("Bumper/SubViewport/Bump")
 bumped = NodePath("Bumper/Bumped")
 subviewport = NodePath("Bumper/SubViewport")
-use_common_material = false
 
 [node name="TxtA1111" parent="." instance=ExtResource("2_avcft")]
 
@@ -456,10 +496,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = -70.0
-offset_right = 381.0
-offset_bottom = -16.0
+offset_left = 7.0
+offset_top = -60.0
+offset_right = 373.0
+offset_bottom = -6.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7pq2h")
 
@@ -500,10 +540,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -137.0
-offset_top = -131.0
-offset_right = -17.0
-offset_bottom = -16.0
+offset_left = -127.0
+offset_top = -123.0
+offset_right = -7.0
+offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7pq2h")
@@ -531,85 +571,113 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -520.0
-offset_top = -71.0
-offset_right = -154.0
-offset_bottom = -17.0
+offset_left = -458.0
+offset_top = -62.0
+offset_right = -133.0
+offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7pq2h")
 
 [node name="BumpToggle" type="CheckBox" parent="UI/BottumMiddle"]
 layout_mode = 0
-offset_left = 9.0
-offset_right = 122.0
+offset_left = 4.0
+offset_right = 117.0
 offset_bottom = 54.0
 button_pressed = true
 text = "Enable
 Bump Map"
 
-[node name="Strength" type="HSlider" parent="UI/BottumMiddle"]
-layout_mode = 0
-offset_left = 134.0
-offset_top = 31.0
-offset_right = 233.0
-offset_bottom = 47.0
-min_value = 1.0
-max_value = 48.0
-value = 24.0
+[node name="Label3" type="Label" parent="UI/BottumMiddle"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -43.5
+offset_top = -48.0
+offset_right = 23.5
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Strength"
 
-[node name="StrengthLabel" type="Label" parent="UI/BottumMiddle/Strength"]
-layout_mode = 0
-offset_left = 78.0
-offset_top = -27.0
-offset_right = 103.0
-offset_bottom = -4.0
+[node name="StrengthLabel" type="Label" parent="UI/BottumMiddle/Label3"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 34.0
+offset_bottom = 51.0
+grow_horizontal = 0
 text = "24
 
 "
 
-[node name="Label" type="Label" parent="UI/BottumMiddle"]
-layout_mode = 0
-offset_left = 136.0
-offset_top = 3.0
-offset_right = 203.0
-offset_bottom = 26.0
-text = "Strength"
-
-[node name="Label3" type="Label" parent="UI/BottumMiddle"]
-layout_mode = 0
-offset_left = 136.0
-offset_top = 3.0
-offset_right = 203.0
-offset_bottom = 26.0
-text = "Strength"
-
-[node name="Scale" type="HSlider" parent="UI/BottumMiddle"]
-layout_mode = 0
-offset_left = 248.0
-offset_top = 31.0
-offset_right = 347.0
-offset_bottom = 47.0
-min_value = -2.0
-max_value = 2.0
-step = 0.05
-value = 1.0
+[node name="Strength" type="HSlider" parent="UI/BottumMiddle/Label3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.5
+offset_top = 5.0
+offset_right = 66.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 1.0
+max_value = 48.0
+value = 24.0
 
 [node name="Label2" type="Label" parent="UI/BottumMiddle"]
-layout_mode = 0
-offset_left = 249.0
-offset_top = 5.0
-offset_right = 316.0
-offset_bottom = 28.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -45.0
+offset_right = -32.0
+offset_bottom = -22.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "Scale
 "
 
 [node name="ScaleLabel" type="Label" parent="UI/BottumMiddle/Label2"]
-layout_mode = 0
-offset_left = 54.0
-offset_right = 79.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -11.0
+offset_right = 14.0
 offset_bottom = 23.0
+grow_horizontal = 0
 text = "1"
+
+[node name="Scale" type="HSlider" parent="UI/BottumMiddle/Label2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = 2.0
+offset_right = 28.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 0
+min_value = -2.0
+max_value = 2.0
+step = 0.05
+value = 1.0
 
 [node name="Stage" type="Node3D" parent="."]
 
@@ -619,17 +687,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0212716, 2.32476)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Stage"]
 environment = SubResource("Environment_hfq07")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Stage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0332)
+[node name="Lights" type="Node3D" parent="Stage"]
+
+[node name="BackLightBox" type="Node3D" parent="Stage/Lights"]
+
+[node name="LightBack" type="OmniLight3D" parent="Stage/Lights/BackLightBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46554, 2.21584, -2.58443)
+
+[node name="LightRight" type="OmniLight3D" parent="Stage/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59592, -0.49849, 0.944318)
 light_energy = 2.0
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Stage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.717793, 1.37184, -2.22203)
+[node name="LightLeft" type="OmniLight3D" parent="Stage/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12868, -0.49849, 0.944318)
+light_energy = 2.0
 
 [node name="Texturable" type="Node3D" parent="Stage"]
 
 [node name="Box" type="MeshInstance3D" parent="Stage/Texturable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71962, 0.449946, -1.57591)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.13984, 0.0789409, -1.56733)
 mesh = SubResource("BoxMesh_lq1x8")
 skeleton = NodePath("../../..")
 
@@ -639,12 +715,12 @@ mesh = SubResource("BoxMesh_oxoyc")
 skeleton = NodePath("../../..")
 
 [node name="Sphere" type="MeshInstance3D" parent="Stage/Texturable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15777, 0.385465, -1.35195)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89809, 0.224214, -1.4413)
 mesh = SubResource("SphereMesh_ajs2p")
 skeleton = NodePath("../../..")
 
 [node name="lulza" parent="Stage/Texturable" instance=ExtResource("4_ka32l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108308, -2.25629, -1.43454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0593125, -1.58147, -1.3078)
 
 [node name="Skeleton3D" parent="Stage/Texturable/lulza/Armature" index="0"]
 bones/7/rotation = Quaternion(-0.578993, -0.40073, 0.592092, -0.391931)
@@ -712,12 +788,11 @@ bones/63/scale = Vector3(1, 1, 1)
 autoplay = "dancing"
 
 [node name="Platform" type="MeshInstance3D" parent="Stage/Texturable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.134175, -2.3228, -1.40339)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0851795, -1.64798, -1.27665)
 mesh = SubResource("CylinderMesh_upite")
 
 [node name="Clocko" type="Node3D" parent="Stage"]
 transform = Transform3D(0.648895, -0.255366, -0.0610215, 0.220681, 0.618613, -0.242111, 0.142251, 0.205198, 0.653956, 0, 1.53936, -2.24316)
-visible = false
 
 [node name="Body" type="MeshInstance3D" parent="Stage/Clocko"]
 transform = Transform3D(1, 0, 0, 0, -3.0598e-08, -1, 0, 0.7, -4.37114e-08, 0, 0, 0.0348883)
@@ -845,7 +920,7 @@ skeleton = NodePath("../../../Bumper")
 [connection signal="pressed" from="UI/TopRight/SaveImage" to="." method="_on_save_image_pressed"]
 [connection signal="pressed" from="UI/BottomLeft/Mute" to="." method="_toggle_mute"]
 [connection signal="toggled" from="UI/BottumMiddle/BumpToggle" to="." method="_on_bump_toggled"]
-[connection signal="value_changed" from="UI/BottumMiddle/Strength" to="." method="_on_strength_value_changed"]
-[connection signal="value_changed" from="UI/BottumMiddle/Scale" to="." method="_on_scale_value_changed"]
+[connection signal="value_changed" from="UI/BottumMiddle/Label3/Strength" to="." method="_on_strength_value_changed"]
+[connection signal="value_changed" from="UI/BottumMiddle/Label2/Scale" to="." method="_on_scale_value_changed"]
 
 [editable path="Stage/Texturable/lulza"]
