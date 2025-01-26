@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bdqrafq64ybj7"]
+[gd_scene load_steps=35 format=3 uid="uid://bdqrafq64ybj7"]
 
 [ext_resource type="Script" path="res://scenes/demo/demo.gd" id="1_lw7km"]
 [ext_resource type="Material" uid="uid://26p8jhy6d83i" path="res://scenes/demo/goldish.tres" id="2_1dggk"]
@@ -6,20 +6,33 @@
 [ext_resource type="PackedScene" uid="uid://58uk28vmm5w8" path="res://scenes/demo/assets/lulza.glb" id="4_ka32l"]
 [ext_resource type="AudioStream" uid="uid://cac0tnbk0nrl1" path="res://scenes/demo/assets/dance-to-the-night-245142.mp3" id="5_p4ohj"]
 [ext_resource type="Texture2D" uid="uid://dy3wwsc5kb0h4" path="res://lbl-nuts-and-bolts.png" id="6_xpk4u"]
+[ext_resource type="Shader" path="res://scenes/demo/bump.gdshader" id="7_lrw20"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pq2h"]
 bg_color = Color(0.670588, 0.376471, 0.658824, 0.411765)
 
 [sub_resource type="Environment" id="Environment_hfq07"]
+background_mode = 2
 ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 2
+ssil_radius = 10.0
+volumetric_fog_density = 0.007
 
 [sub_resource type="BoxMesh" id="BoxMesh_lq1x8"]
+resource_local_to_scene = true
 size = Vector3(2, 2, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3gxrt"]
+albedo_color = Color(0.647059, 0.556863, 1, 1)
+uv1_scale = Vector3(8, 8, 8)
+
 [sub_resource type="BoxMesh" id="BoxMesh_oxoyc"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_3gxrt")
 size = Vector3(16, 9, 0.1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ajs2p"]
+resource_local_to_scene = true
 radius = 1.0
 height = 2.0
 radial_segments = 8
@@ -271,7 +284,29 @@ _data = {
 "spin": SubResource("Animation_xmmrf")
 }
 
-[node name="Demo" type="Node3D" node_paths=PackedStringArray("txtA111", "texturable", "prompt_edit", "negative_edit", "steps_edit", "resolution_edit", "generate", "save_image", "file_dialog", "mute", "audio_player", "music_credit", "clocko")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qnlsf"]
+shader = ExtResource("7_lrw20")
+shader_parameter/BLUR = 3.0
+shader_parameter/STRENGTH = 24.0
+shader_parameter/og = ExtResource("6_xpk4u")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tylfm"]
+viewport_path = NodePath("Bumper/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_u27nd"]
+viewport_path = NodePath("Bumper/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ya2nd"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_tylfm")
+normal_enabled = true
+normal_texture = SubResource("ViewportTexture_u27nd")
+
+[sub_resource type="BoxMesh" id="BoxMesh_rt1wo"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ya2nd")
+
+[node name="Demo" type="Node3D" node_paths=PackedStringArray("txtA111", "texturable", "prompt_edit", "negative_edit", "steps_edit", "resolution_edit", "generate", "save_image", "file_dialog", "mute", "audio_player", "music_credit", "bump_toggle", "bump_strength", "bump_scale", "clocko", "strength_label", "scale_label", "bump", "bumped", "subviewport")]
 script = ExtResource("1_lw7km")
 txtA111 = NodePath("TxtA1111")
 texturable = NodePath("Stage/Texturable")
@@ -285,7 +320,16 @@ file_dialog = NodePath("UI/FileDialog")
 mute = NodePath("UI/BottomLeft/Mute")
 audio_player = NodePath("Stage/AudioStreamPlayer3D")
 music_credit = NodePath("UI/BottomLeft/MusicCredit")
+bump_toggle = NodePath("UI/BottumMiddle/BumpToggle")
+bump_strength = NodePath("UI/BottumMiddle/Strength")
+bump_scale = NodePath("UI/BottumMiddle/Scale")
 clocko = NodePath("Stage/Clocko")
+strength_label = NodePath("UI/BottumMiddle/Strength/StrengthLabel")
+scale_label = NodePath("UI/BottumMiddle/Label2/ScaleLabel")
+bump = NodePath("Bumper/SubViewport/Bump")
+bumped = NodePath("Bumper/Bumped")
+subviewport = NodePath("Bumper/SubViewport")
+use_common_material = false
 
 [node name="TxtA1111" parent="." instance=ExtResource("2_avcft")]
 
@@ -479,6 +523,93 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("6_xpk4u")
 expand_mode = 1
+
+[node name="BottumMiddle" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -520.0
+offset_top = -71.0
+offset_right = -154.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7pq2h")
+
+[node name="BumpToggle" type="CheckBox" parent="UI/BottumMiddle"]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 122.0
+offset_bottom = 54.0
+button_pressed = true
+text = "Enable
+Bump Map"
+
+[node name="Strength" type="HSlider" parent="UI/BottumMiddle"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 31.0
+offset_right = 233.0
+offset_bottom = 47.0
+min_value = 1.0
+max_value = 48.0
+value = 24.0
+
+[node name="StrengthLabel" type="Label" parent="UI/BottumMiddle/Strength"]
+layout_mode = 0
+offset_left = 78.0
+offset_top = -27.0
+offset_right = 103.0
+offset_bottom = -4.0
+text = "24
+
+"
+
+[node name="Label" type="Label" parent="UI/BottumMiddle"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 3.0
+offset_right = 203.0
+offset_bottom = 26.0
+text = "Strength"
+
+[node name="Label3" type="Label" parent="UI/BottumMiddle"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 3.0
+offset_right = 203.0
+offset_bottom = 26.0
+text = "Strength"
+
+[node name="Scale" type="HSlider" parent="UI/BottumMiddle"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 31.0
+offset_right = 347.0
+offset_bottom = 47.0
+min_value = -2.0
+max_value = 2.0
+step = 0.05
+value = 1.0
+
+[node name="Label2" type="Label" parent="UI/BottumMiddle"]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 5.0
+offset_right = 316.0
+offset_bottom = 28.0
+text = "Scale
+"
+
+[node name="ScaleLabel" type="Label" parent="UI/BottumMiddle/Label2"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 79.0
+offset_bottom = 23.0
+text = "1"
 
 [node name="Stage" type="Node3D" parent="."]
 
@@ -681,6 +812,28 @@ libraries = {
 }
 autoplay = "spin"
 
+[node name="Bumper" type="Node" parent="."]
+
+[node name="SubViewport" type="SubViewport" parent="Bumper"]
+disable_3d = true
+size = Vector2i(1024, 1024)
+render_target_update_mode = 4
+
+[node name="Bump" type="ColorRect" parent="Bumper/SubViewport"]
+material = SubResource("ShaderMaterial_qnlsf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.376471, 0.878431, 0.388235, 1)
+
+[node name="Bumped" type="MeshInstance3D" parent="Bumper"]
+transform = Transform3D(0.863281, 0, 0.504724, 0, 1, 0, -0.504724, 0, 0.863281, 1.39663, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_rt1wo")
+skeleton = NodePath("../../../Bumper")
+
 [connection signal="on_error" from="TxtA1111" to="." method="_on_txt_a_1111_on_error"]
 [connection signal="on_image" from="TxtA1111" to="." method="_on_txt_a_1111_on_image"]
 [connection signal="file_selected" from="UI/FileDialog" to="." method="_on_file_dialog_file_selected"]
@@ -691,5 +844,8 @@ autoplay = "spin"
 [connection signal="pressed" from="UI/TopMarginContainer/MarginContainer/HBoxContainer/Generate" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/TopRight/SaveImage" to="." method="_on_save_image_pressed"]
 [connection signal="pressed" from="UI/BottomLeft/Mute" to="." method="_toggle_mute"]
+[connection signal="toggled" from="UI/BottumMiddle/BumpToggle" to="." method="_on_bump_toggled"]
+[connection signal="value_changed" from="UI/BottumMiddle/Strength" to="." method="_on_strength_value_changed"]
+[connection signal="value_changed" from="UI/BottumMiddle/Scale" to="." method="_on_scale_value_changed"]
 
 [editable path="Stage/Texturable/lulza"]

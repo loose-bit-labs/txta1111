@@ -45,16 +45,38 @@ func _on_response(result, response_code, headers, body) -> void:
 		on_error.emit("error: %d ; %s ; %s ; %s", response_code, result, headers, text)
 
 
+static func make_material(f:float = 3.) -> StandardMaterial3D:
+	var material = StandardMaterial3D.new()
+	material.uv1_scale = Vector3(f,f,f)
+	material.albedo_color = Color.RED
+	material.resource_local_to_scene = true 
+	return material
+
+
+static func find_materials(node:Node, materials:Array[StandardMaterial3D] = []) -> Array[StandardMaterial3D]:
+	if node is MeshInstance3D:
+		var m3:MeshInstance3D = node as MeshInstance3D
+		var active = m3.get_active_material(0)
+		if active:
+			active.resource_local_to_scene = true
+			materials.append(active)
+		else: 
+			active = make_material()
+			m3.set_surface_override_material(0, active)
+		materials.append(active)
+	for kid in node.get_children():
+		find_materials(kid, materials)
+	return materials
+
 static func same_material(node:Node, material:StandardMaterial3D = null) -> StandardMaterial3D:
 	if not material:
-		material = StandardMaterial3D.new()
-		var f = 3.
-		material.uv1_scale = Vector3(f,f,f)
-		material.albedo_color = Color.RED
-	if node.has_method("set_surface_override_material"):
+		material = make_material()
+	if node is MeshInstance3D:
 		var m3:MeshInstance3D = node as MeshInstance3D
 		if m3:
 			m3.set_surface_override_material(0, material)
+			if m3.get_active_material(0):
+				m3.get_active_material(0).resource_local_to_scene = true 
 	for kid in node.get_children():
 		same_material(kid, material)
 	return material
